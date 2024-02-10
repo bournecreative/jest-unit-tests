@@ -15,7 +15,6 @@ function App() {
       <UserForm onAddUser={onAddUser} />
       <hr />
       <UserList users={users} />
-
       {/* <pre>{JSON.stringify(users, null, 2)}</pre> */}
     </div>
   );
