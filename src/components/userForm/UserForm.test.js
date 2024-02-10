@@ -17,7 +17,9 @@ test("call onAddUser when the form is submitted", () => {
 
   render(<UserForm onAddUser={mock} />);
 
+  // react recommends we identify elements by role
   const [nameInput, emailInput] = screen.getAllByRole("textbox");
+
   const button = screen.getByRole("button");
   user.click(nameInput);
   user.keyboard("boba fett");
