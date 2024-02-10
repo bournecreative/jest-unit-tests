@@ -34,3 +34,22 @@ test("call onAddUser when the form is submitted", () => {
     userEmail: "boba@bounty.com",
   });
 });
+
+test("form inputs are cleared when submitted", () => {
+  const mock = jest.fn();
+
+  render(<UserForm onAddUser={mock} />);
+
+  const nameInput = screen.getByRole("textbox", { name: /name/i });
+  const emailInput = screen.getByRole("textbox", { name: /email/i });
+  const button = screen.getByRole("button");
+  user.click(nameInput);
+  user.keyboard("boba fett");
+
+  user.click(emailInput);
+  user.keyboard("boba@bounty.com");
+  user.click(button);
+
+  expect(nameInput).toHaveValue("");
+  expect(emailInput).toHaveValue("");
+});
